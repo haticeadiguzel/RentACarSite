@@ -228,7 +228,6 @@
     <Compile Include="Abstract\IBrandDal.cs" />
     <Compile Include="Abstract\ICarDal.cs" />
     <Compile Include="Abstract\IColorDal.cs" />
-    <Compile Include="Abstract\IEntityRepository.cs" />
     <Compile Include="Concrete\EntityFramework\EfBrandDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCarDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfColorDal.cs" />
@@ -241,6 +240,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{6A5A682C-F3FC-4946-9FAF-8E64E896FD75}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{2199BF31-DA15-4FC3-A9AA-C562200D3682}</Project>
       <Name>Entities</Name>

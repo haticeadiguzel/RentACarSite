@@ -187,6 +187,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{6A5A682C-F3FC-4946-9FAF-8E64E896FD75}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{CA658126-1702-447A-8A83-30A355004FB8}</Project>
       <Name>DataAccess</Name>
