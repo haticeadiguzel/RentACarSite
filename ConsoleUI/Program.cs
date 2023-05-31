@@ -13,6 +13,9 @@ namespace ConsoleUI
             //BrandTest();
             //ColorTest();
             //CarDetailsTest();
+            //RentalTest();
+            //UserTest();
+            CustomerTest();
 
             Console.ReadLine();
         }
@@ -203,6 +206,176 @@ namespace ConsoleUI
             Console.WriteLine("--------------------------------------------------");
 
             Console.WriteLine(colorManager.GetById(1).Data.Name);
+
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            rentalManager.Add(new Rental
+            {
+                CarId = 1,
+                CustomerId = 1,
+                RentDate = new DateTime(2021, 02, 15),
+                ReturnDate = new DateTime(2021, 02, 20)
+            });
+
+            rentalManager.Add(new Rental
+            {
+                CarId = 2,
+                CustomerId = 2,
+                RentDate = new DateTime(2021, 02, 15)
+            });
+
+            rentalManager.Add(new Rental
+            {
+                CarId = 3,
+                CustomerId = 3,
+                RentDate = new DateTime(2023, 02, 15),
+                ReturnDate = new DateTime(2023, 02, 20)
+            });
+
+            foreach (var rental in rentalManager.GetAll().Data)
+            {
+                Console.WriteLine(rental.CarId);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            userManager.Add(new User
+            {
+                Id = 1,
+                FirstName = "Mehmet",
+                LastName = "Kaya",
+                Email = "mehmet@",
+                Password = "123456"
+            });
+
+            userManager.Add(new User
+            {
+                Id = 2,
+                FirstName = "Ahmet",
+                LastName = "Kaya",
+                Email = "ahmet@",
+                Password = "123456"
+            });
+
+            userManager.Add(new User
+            {
+                Id = 3,
+                FirstName = "Ali",
+                LastName = "Kaya",
+                Email = "ali@",
+                Password = "123456"
+            });
+
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+            userManager.Delete(new User
+            {
+                Id = 3,
+                FirstName = "Ali",
+                LastName = "Kaya",
+                Email = "ali@",
+                Password = "123456"
+
+            });
+
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+            userManager.Update(new User
+            {
+                Id = 2,
+                FirstName = "Umut",
+                LastName = "Kaya",
+                Email = "umut@",
+                Password = "123456"
+            });
+
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+            Console.WriteLine(userManager.GetById(1).Data.FirstName);
+
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            customerManager.Add(new Customer
+            {
+                Id = 1,
+                CompanyName = "Aselsan"
+            });
+
+            customerManager.Add(new Customer
+            {
+                Id = 2,
+                CompanyName = "Baykar"
+            });
+
+            customerManager.Add(new Customer
+            {
+                Id = 3,
+                CompanyName = "Havelsan"
+            });
+
+            foreach (var customer in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+            customerManager.Delete(new Customer
+            {
+                Id = 3,
+                CompanyName = "Havelsan"
+            });
+
+            foreach (var customer in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+            customerManager.Update(new Customer
+            {
+                Id = 2,
+                CompanyName = "Roketsan"
+            });
+
+            foreach (var customer in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
+
+            Console.WriteLine("--------------------------------------------------");
+
+            Console.WriteLine(customerManager.GetById(1).Data.CompanyName);
 
         }
     }
